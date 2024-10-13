@@ -1,0 +1,27 @@
+{
+  "name": "tp2json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "build": "tsc",
+    "lint": "npx xo --fix"
+  },
+  "author": "isitgeorge",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/node": "^22.7.5",
+    "jest": "^29.7.0",
+    "jest-puppeteer": "^10.1.2",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3",
+    "xo": "^0.59.3"
+  },
+  "dependencies": {
+    "puppeteer": "^23.5.3"
+  }
+}

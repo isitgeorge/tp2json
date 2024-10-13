@@ -1,0 +1,15 @@
+{
+  "space": 2,
+  "semicolon": false,
+  "bracketSpacing": true,
+  "rules": {
+    "@typescript-eslint/object-curly-spacing": [
+      "error",
+      "always"
+    ]
+  },
+  "ignores": [
+    "**.test.ts",
+    "jest.config.js"
+  ]
+}
