@@ -17,14 +17,14 @@ export default async function tp2json(config?: Config): Promise<Review[]> {
   })
   const page = await browser.newPage()
   const buildUrl = `https://${config.country}.trustpilot.com/review/${config.profile}`
-  const ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36";
-  await page.setUserAgent(ua);
+  const ua = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+  await page.setUserAgent(ua)
   await page.goto(buildUrl)
 
   try {
     await page.waitForSelector('[id="onetrust-accept-btn-handler"]', { timeout: 5000 })
     await page.click('[id="onetrust-accept-btn-handler"]')
-  } catch { }
+  } catch {}
 
   let remaining: number = config.limit
   const reviews: Review[] = []
