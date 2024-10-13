@@ -37,7 +37,7 @@ returns [{
 
 #### Config
 
-Taken from GH Actions as a rough figure
+Config object to be passed to tp2json
 
 | Parameter | Value |
 |--|--|
