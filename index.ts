@@ -46,7 +46,13 @@ export default async function tp2json(config?: Config): Promise<Review[]> {
 }
 
 async function getValue(selector: string, source: ElementHandle, attribute?: string): Promise<string> {
-  const element = await source.waitForSelector(selector)
+  let element
+  try {
+    element = await source.waitForSelector(selector, { timeout: 1000 })
+  } catch {
+    return ''
+  }
+
   if (element) {
     const value = await element.evaluate((element_, attribute) => {
       if (attribute) {
@@ -80,8 +86,8 @@ async function parseReviews(page: Page, remaining: number, config: Config): Prom
     }
 
     const author = await getValue('[data-consumer-name-typography]', reviewElement)
-    const title = await getValue('[class^="typography_heading-s__"]', reviewElement)
-    const summary = await getValue('[class^="typography_body-l__"]', reviewElement)
+    const title = await getValue('[data-service-review-title-typography]', reviewElement)
+    const summary = await getValue('[data-service-review-text-typography]', reviewElement)
     const date = await getValue('[data-service-review-date-of-experience-typography]', reviewElement)
     const rating = await getValue('[data-service-review-rating]', reviewElement, 'data-service-review-rating')
     const url = await getValue('[data-review-title-typography]', reviewElement, 'href')
