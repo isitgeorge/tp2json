@@ -24,7 +24,7 @@ export default async function tp2json(config?: Config): Promise<Review[]> {
   try {
     await page.waitForSelector('[id="onetrust-accept-btn-handler"]', { timeout: 5000 })
     await page.click('[id="onetrust-accept-btn-handler"]')
-  } catch {}
+  } catch { }
 
   let remaining: number = config.limit
   const reviews: Review[] = []
@@ -109,10 +109,9 @@ async function parseReviews(page: Page, remaining: number, config: Config): Prom
 }
 
 async function navigateToNext(page: Page): Promise<void> {
-  await page.waitForSelector('[data-pagination-button-next-link]', { timeout: 5000 })
-  await page.click('[data-pagination-button-next-link]')
+  await page.$eval('[data-pagination-button-next-link]', elem => (elem as HTMLElement).click());
   await Promise.all([
     page.waitForNavigation(),
-    page.click('[data-pagination-button-next-link]'),
+    page.$eval('[data-pagination-button-next-link]', elem => (elem as HTMLElement).click()),
   ])
 }
