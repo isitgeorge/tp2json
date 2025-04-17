@@ -1,6 +1,6 @@
 {
   "name": "tp2json",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a TrustPilot to JSON review scraper",
   "main": "dist/index.js",
   "type": "module",
