@@ -109,9 +109,9 @@ async function parseReviews(page: Page, remaining: number, config: Config): Prom
 }
 
 async function navigateToNext(page: Page): Promise<void> {
-  await page.$eval('[data-pagination-button-next-link]', elem => (elem as HTMLElement).click());
   await Promise.all([
     page.waitForNavigation(),
     page.$eval('[data-pagination-button-next-link]', elem => (elem as HTMLElement).click()),
   ])
+  await page.reload({ waitUntil: 'networkidle2' });
 }
