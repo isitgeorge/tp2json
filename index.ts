@@ -88,7 +88,7 @@ async function parseReviews(page: Page, remaining: number, config: Config): Prom
     const author = await getValue('[data-consumer-name-typography]', reviewElement)
     const title = await getValue('[data-service-review-title-typography]', reviewElement)
     const summary = await getValue('[data-service-review-text-typography]', reviewElement)
-    const date = await getValue('[data-service-review-date-of-experience-typography]', reviewElement)
+    const date = await getValue('[data-service-review-date-time-ago]', reviewElement)
     const rating = await getValue('[data-service-review-rating]', reviewElement, 'data-service-review-rating')
     const url = await getValue('[data-review-title-typography]', reviewElement, 'href')
     const location = await getValue('[data-consumer-country-typography]', reviewElement)
